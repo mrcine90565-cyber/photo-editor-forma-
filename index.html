@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" w-tid="1">
+<head w-tid="3">
+  
+
+<link rel="stylesheet" href="https://api.websim.com/fonts.css?v=3c3af018aa02e5c041555ddea531a6227d8337ea">
+<style class="websim-injected websim-ios-mobile-fix">
+/* iOS zoom prevention and overscroll behavior - injected by WebSim */
+html, body {
+  touch-action: pan-x pan-y;
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+}
+input, textarea, select {
+  font-size: max(1rem, 16px) !important;
+}
+</style>
+<script class="websim-injected">__WEBSIM_DATA__={"home":false,"hostOrigin":"https://websim.com","apiOrigin":"https://api.websim.com","isTopLevelFrame":false,"project_id":"pr7nupoucr8jpdcxv0g9","preview":true,"activityCaptureMode":"on","route":{"type":"project","id":"pr7nupoucr8jpdcxv0g9"},"baseUrl":"https://websim.com/p/pr7nupoucr8jpdcxv0g9"}</script>
+<script class="websim-injected" src="https://api.websim.com/dist/index.js?v=3c3af018aa02e5c041555ddea531a6227d8337ea"></script>
+<meta charset="utf-8" w-tid="5"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" w-tid="7"/>
+  <meta name="theme-color" content="#17191d" w-tid="9"/>
+  <title w-tid="11">Forma Editor</title>
+  <script src="https://cdn.tailwindcss.com" w-tid="13"></script>
+  <script src="https://unpkg.com/lucide@latest" crossOrigin="anonymous" w-tid="15"></script>
+  <link rel="stylesheet" href="styles.css" w-tid="17"/>
+</head>
+<body w-tid="19">
+  <div class="app-shell" w-tid="21">
+    <header class="topbar" w-tid="23">
+      <a class="brand" href="#" aria-label="Forma home" w-tid="25"><span class="brand-mark" w-tid="27"><i data-lucide="aperture" w-tid="29"></i></span><span w-tid="31">forma</span></a>
+      <nav class="menu-bar" aria-label="Main menu" w-tid="33">
+        <div class="menu-wrap" w-tid="35"><button class="menu-trigger" data-menu="file" w-tid="37">File</button><div class="dropdown" data-dropdown="file" w-tid="39">
+          <button data-action="new" w-tid="41"><i data-lucide="file-plus-2" w-tid="43"></i>New canvas <kbd w-tid="45">⌘ N</kbd></button><button data-action="open" w-tid="47"><i data-lucide="folder-open" w-tid="49"></i>Open image <kbd w-tid="51">⌘ O</kbd></button><div class="menu-separator" w-tid="53"></div><button data-action="export-png" w-tid="55"><i data-lucide="image-down" w-tid="57"></i>Export as PNG</button><button data-action="export-jpg" w-tid="59"><i data-lucide="image-down" w-tid="61"></i>Export as JPG</button>
+        </div></div>
+        <div class="menu-wrap" w-tid="63"><button class="menu-trigger" data-menu="edit" w-tid="65">Edit</button><div class="dropdown" data-dropdown="edit" w-tid="67">
+          <button data-action="undo" w-tid="69"><i data-lucide="undo-2" w-tid="71"></i>Undo <kbd w-tid="73">⌘ Z</kbd></button><button data-action="redo" w-tid="75"><i data-lucide="redo-2" w-tid="77"></i>Redo <kbd w-tid="79">⇧ ⌘ Z</kbd></button><div class="menu-separator" w-tid="81"></div><button data-action="clear" w-tid="83"><i data-lucide="eraser" w-tid="85"></i>Clear active layer</button>
+        </div></div>
+        <div class="menu-wrap" w-tid="87"><button class="menu-trigger" data-menu="image" w-tid="89">Image</button><div class="dropdown" data-dropdown="image" w-tid="91">
+          <button data-action="adjustments" w-tid="93"><i data-lucide="sliders-horizontal" w-tid="95"></i>Adjustments</button><button data-adjust="brightness" w-tid="97"><i data-lucide="sun" w-tid="99"></i>Brightness</button><button data-adjust="contrast" w-tid="101"><i data-lucide="contrast" w-tid="103"></i>Contrast</button><button data-adjust="saturation" w-tid="105"><i data-lucide="blend" w-tid="107"></i>Saturation</button><button data-adjust="sepia" w-tid="109"><i data-lucide="coffee" w-tid="111"></i>Sepia</button><button data-adjust="blur" w-tid="113"><i data-lucide="droplets" w-tid="115"></i>Blur</button><button data-adjust="invert" w-tid="117"><i data-lucide="contrast" w-tid="119"></i>Invert</button>
+        </div></div>
+        <div class="menu-wrap" w-tid="121"><button class="menu-trigger" data-menu="filter" w-tid="123">Filter</button><div class="dropdown" data-dropdown="filter" w-tid="125">
+          <button data-filter="grayscale" w-tid="127"><i data-lucide="circle" w-tid="129"></i>Grayscale</button><button data-filter="pixelate" w-tid="131"><i data-lucide="grid-2x2" w-tid="133"></i>Pixelate</button><button data-filter="vintage" w-tid="135"><i data-lucide="film" w-tid="137"></i>Vintage</button><button data-filter="sharpen" w-tid="139"><i data-lucide="focus" w-tid="141"></i>Sharpen</button>
+        </div></div>
+      </nav>
+      <div class="top-actions" w-tid="143"><span class="save-state" w-tid="145"><span class="status-dot" w-tid="147"></span>All changes saved</span><button class="ai-button" id="open-ai" w-tid="149"><i data-lucide="sparkles" w-tid="151"></i><span w-tid="153">AI generate</span></button><button class="export-button" data-action="export-png" w-tid="155">Export <i data-lucide="chevron-down" w-tid="157"></i></button></div>
+    </header>
+
+    <main class="editor-layout" w-tid="159">
+      <aside class="tool-rail" aria-label="Tools" w-tid="161">
+        <div class="tool-group" w-tid="163">
+          <button class="tool-button active" data-tool="move" title="Move (V)" w-tid="165"><i data-lucide="move" w-tid="167"></i><span w-tid="169">V</span></button>
+          <button class="tool-button" data-tool="marquee" title="Marquee (M)" w-tid="171"><i data-lucide="scan" w-tid="173"></i><span w-tid="175">M</span></button>
+          <button class="tool-button" data-tool="brush" title="Brush (B)" w-tid="177"><i data-lucide="paintbrush" w-tid="179"></i><span w-tid="181">B</span></button>
+          <button class="tool-button" data-tool="eraser" title="Eraser (E)" w-tid="183"><i data-lucide="eraser" w-tid="185"></i><span w-tid="187">E</span></button>
+          <button class="tool-button" data-tool="fill" title="Fill (G)" w-tid="189"><i data-lucide="paint-bucket" w-tid="191"></i><span w-tid="193">G</span></button>
+          <button class="tool-button" data-tool="text" title="Text (T)" w-tid="195"><i data-lucide="type" w-tid="197"></i><span w-tid="199">T</span></button>
+          <button class="tool-button" data-tool="shape" title="Shape (U)" w-tid="201"><i data-lucide="square" w-tid="203"></i><span w-tid="205">U</span></button>
+          <button class="tool-button" data-tool="zoom" title="Zoom (Z)" w-tid="207"><i data-lucide="zoom-in" w-tid="209"></i><span w-tid="211">Z</span></button>
+          <button class="tool-button" data-tool="hand" title="Hand (H)" w-tid="213"><i data-lucide="hand" w-tid="215"></i><span w-tid="217">H</span></button>
+          <button class="tool-button" data-tool="lasso" title="Lasso (L)" w-tid="219"><i data-lucide="lasso" w-tid="221"></i><span w-tid="223">L</span></button>
+          <button class="tool-button" data-tool="polygon" title="Polygonal lasso" w-tid="225"><i data-lucide="pentagon" w-tid="227"></i><span w-tid="229">PL</span></button>
+          <button class="tool-button" data-tool="wand" title="Magic wand (W)" w-tid="231"><i data-lucide="wand-sparkles" w-tid="233"></i><span w-tid="235">W</span></button>
+          <button class="tool-button" data-tool="healing" title="Spot healing (J)" w-tid="237"><i data-lucide="bandage" w-tid="239"></i><span w-tid="241">J</span></button>
+          <button class="tool-button" data-tool="clone" title="Clone stamp (S), Alt-click to sample" w-tid="243"><i data-lucide="stamp" w-tid="245"></i><span w-tid="247">S</span></button>
+          <button class="tool-button" data-tool="dodge" title="Dodge / Burn (O)" w-tid="249"><i data-lucide="sun-dim" w-tid="251"></i><span w-tid="253">O</span></button>
+          <button class="tool-button" data-tool="blur" title="Blur / Sharpen / Smudge" w-tid="255"><i data-lucide="droplet" w-tid="257"></i><span w-tid="259">R</span></button>
+          <button class="tool-button" data-tool="pen" title="Pen path (P)" w-tid="261"><i data-lucide="pen-tool" w-tid="263"></i><span w-tid="265">P</span></button>
+          <button class="tool-button" data-tool="eyedropper" title="Eyedropper (I)" w-tid="267"><i data-lucide="pipette" w-tid="269"></i><span w-tid="271">I</span></button>
+          <button class="tool-button" data-tool="gradient" title="Gradient (Shift+G)" w-tid="273"><i data-lucide="blend" w-tid="275"></i><span w-tid="277">G</span></button>
+        </div>
+        <div class="tool-divider" w-tid="279"></div>
+        <div class="swatches" w-tid="281"><label class="color-swatch" title="Foreground color" w-tid="283"><input id="brush-color" type="color" value="#d9fc63" w-tid="285"/></label><button class="swap-colors" id="reset-color" title="Reset color" w-tid="287"><i data-lucide="rotate-ccw" w-tid="289"></i></button></div>
+        <div class="tool-settings" id="tool-settings" w-tid="291"><div class="settings-heading" w-tid="293">TOOL OPTIONS</div><label class="retouch-setting" w-tid="295">Mode <select id="retouch-mode" w-tid="297"><option value="blur" w-tid="299">Blur</option><option value="sharpen" w-tid="301">Sharpen</option><option value="smudge" w-tid="303">Smudge</option></select></label><label w-tid="305">Size <span id="size-value" w-tid="307">24 px</span><input id="brush-size" type="range" min="1" max="180" value="24" w-tid="309"/></label><label w-tid="311">Opacity <span id="brush-opacity-value" w-tid="313">100%</span><input id="brush-opacity" type="range" min="1" max="100" value="100" w-tid="315"/></label></div>
+        <button class="help-button" title="Keyboard shortcuts" w-tid="317"><i data-lucide="circle-help" w-tid="319"></i></button>
+      </aside>
+
+      <section class="workspace" id="workspace" w-tid="321">
+        <div class="context-toolbar" id="context-toolbar" w-tid="323"><span id="active-tool-name" w-tid="325">Move tool</span><span class="context-separator" w-tid="327"></span><div class="shape-choice" id="shape-choice" w-tid="329"><button class="mini-choice selected" data-shape="rect" w-tid="331">Rectangle</button><button class="mini-choice" data-shape="circle" w-tid="333">Ellipse</button></div><div class="selection-options" w-tid="335"><button class="mini-choice" id="select-all" w-tid="337">Select all</button><button class="mini-choice" id="deselect" w-tid="339">Deselect</button><button class="mini-choice" id="invert-selection" w-tid="341">Invert</button><label w-tid="343">Tolerance <input id="wand-tolerance" type="range" min="0" max="100" value="24" w-tid="345"/><span id="tolerance-value" w-tid="347">24</span></label></div><div class="path-options" w-tid="349"><button class="mini-choice" id="path-close" w-tid="351">Close path</button><button class="mini-choice" id="path-selection" w-tid="353">Path to selection</button><button class="mini-choice" id="path-stroke" w-tid="355">Stroke path</button></div><div class="gradient-options" w-tid="357"><select id="gradient-type" w-tid="359"><option value="linear" w-tid="361">Linear</option><option value="radial" w-tid="363">Radial</option></select></div><button class="mini-choice" id="transform-toggle" w-tid="365">Transform</button><button class="mini-choice" id="grid-toggle" w-tid="367">Grid</button><button class="mini-choice" id="ruler-toggle" w-tid="369">Rulers</button><span class="context-hint" id="context-hint" w-tid="371">Drag to move the active layer</span></div>
+        <div class="canvas-viewport" id="viewport" w-tid="373">
+          <div class="empty-state" id="empty-state" w-tid="375"><div class="empty-art" w-tid="377"><i data-lucide="image-plus" w-tid="379"></i><span w-tid="381">+</span></div><h1 w-tid="383">Start with an image</h1><p w-tid="385">Drop an image here, or <button id="empty-open" w-tid="387">choose a file</button></p><button class="new-canvas-link" data-action="new" w-tid="389">Create a blank canvas <i data-lucide="arrow-right" w-tid="391"></i></button></div>
+          <canvas id="artboard" aria-label="Image editing canvas" w-tid="393"></canvas><canvas id="selection-overlay" aria-hidden="true" w-tid="395"></canvas><canvas id="guide-overlay" aria-hidden="true" w-tid="397"></canvas>
+          <div class="drop-overlay" id="drop-overlay" w-tid="399"><i data-lucide="download" w-tid="401"></i><strong w-tid="403">Drop to open</strong></div>
+        </div>
+        <div class="ruler-top" id="ruler-top" w-tid="405"></div><div class="ruler-left" id="ruler-left" w-tid="407"></div>
+        <div class="workspace-footer" w-tid="409"><div class="coordinates" w-tid="411"><span class="coord-dot" w-tid="413"></span><span id="coordinates" w-tid="415">X: 0   Y: 0</span></div><div class="zoom-controls" w-tid="417"><button id="zoom-out" title="Zoom out" w-tid="419"><i data-lucide="minus" w-tid="421"></i></button><span id="zoom-label" w-tid="423">100%</span><button id="zoom-in" title="Zoom in" w-tid="425"><i data-lucide="plus" w-tid="427"></i></button><span class="zoom-divider" w-tid="429"></span><button id="fit-canvas" w-tid="431">Fit</button></div><div class="document-size" id="document-size" w-tid="433">No document</div></div>
+      </section>
+
+      <aside class="right-sidebar" w-tid="435">
+        <div class="panel-tabs" w-tid="437"><button class="panel-tab active" data-panel="layers" w-tid="439">Layers</button><button class="panel-tab" data-panel="history" w-tid="441">History</button></div>
+        <section class="side-panel" id="layers-panel" w-tid="443">
+          <div class="panel-section layer-properties" w-tid="445"><div class="section-title" w-tid="447"><span w-tid="449">Layer properties</span><button class="icon-button small" title="More layer options" w-tid="451"><i data-lucide="more-horizontal" w-tid="453"></i></button></div><label class="range-label" w-tid="455">Opacity <span id="layer-opacity-value" w-tid="457">100%</span></label><input id="layer-opacity" type="range" min="0" max="100" value="100" w-tid="459"/><label class="select-label" w-tid="461">Blend mode<select id="blend-mode" w-tid="463"><option w-tid="465">Normal</option><option w-tid="467">Multiply</option><option w-tid="469">Screen</option><option w-tid="471">Overlay</option><option w-tid="473">Soft Light</option><option w-tid="475">Hard Light</option><option w-tid="477">Color Dodge</option><option w-tid="479">Color Burn</option><option w-tid="481">Difference</option><option w-tid="483">Exclusion</option></select><i data-lucide="chevron-down" w-tid="485"></i></label></div>
+          <div class="panel-section layers-section" w-tid="487"><div class="section-title" w-tid="489"><span w-tid="491">Layers <span class="count-pill" id="layer-count" w-tid="493">0</span></span><div class="section-actions" w-tid="495"><button class="icon-button small" id="add-layer" title="Add layer" w-tid="497"><i data-lucide="plus" w-tid="499"></i></button><button class="icon-button small" id="delete-layer" title="Delete layer" w-tid="501"><i data-lucide="trash-2" w-tid="503"></i></button></div></div><div id="group-header" w-tid="505"></div><div class="layer-list" id="layer-list" w-tid="507"></div><div class="layer-footer" w-tid="509"><button id="move-layer-up" w-tid="511"><i data-lucide="arrow-up" w-tid="513"></i>Raise</button><button id="move-layer-down" w-tid="515"><i data-lucide="arrow-down" w-tid="517"></i>Lower</button></div><div class="layer-footer pro-layer-actions" w-tid="519"><button id="add-mask" w-tid="521">Add mask</button><button id="mask-mode" w-tid="523">Mask edit: off</button><button id="mask-white" w-tid="525">Paint white</button></div><div class="layer-footer pro-layer-actions" w-tid="527"><button id="layer-group" w-tid="529">Group</button><button id="layer-fx" w-tid="531">Layer FX</button></div></div>
+          <div class="panel-section adjustments-section" w-tid="533"><div class="section-title" w-tid="535"><span w-tid="537">Adjustments</span><button class="icon-button small" id="reset-adjustments" title="Reset adjustments" w-tid="539"><i data-lucide="rotate-ccw" w-tid="541"></i></button></div><label w-tid="543">Brightness <span data-value="brightness" w-tid="545">0</span><input data-adjust-slider="brightness" type="range" min="-100" max="100" value="0" w-tid="547"/></label><label w-tid="549">Contrast <span data-value="contrast" w-tid="551">0</span><input data-adjust-slider="contrast" type="range" min="-100" max="100" value="0" w-tid="553"/></label><label w-tid="555">Saturation <span data-value="saturation" w-tid="557">0</span><input data-adjust-slider="saturation" type="range" min="-100" max="100" value="0" w-tid="559"/></label><label w-tid="561">Vibrance <span data-value="vibrance" w-tid="563">0</span><input data-adjust-slider="vibrance" type="range" min="-100" max="100" value="0" w-tid="565"/></label><label w-tid="567">Hue rotate <span data-value="hue" w-tid="569">0°</span><input data-adjust-slider="hue" type="range" min="-180" max="180" value="0" w-tid="571"/></label></div><div class="panel-section pro-adjustments" w-tid="573"><div class="section-title" w-tid="575"><span w-tid="577">Curves & Levels</span><span class="section-actions" w-tid="579"><button class="icon-button small" id="reset-curves" title="Reset curve" w-tid="581"><i data-lucide="rotate-ccw" w-tid="583"></i></button></span></div><canvas id="curve-editor" width="200" height="120" w-tid="585"></canvas><label w-tid="587">Black point <span id="black-value" w-tid="589">0</span><input id="black-level" type="range" min="0" max="80" value="0" w-tid="591"/></label><label w-tid="593">White point <span id="white-value" w-tid="595">255</span><input id="white-level" type="range" min="175" max="255" value="255" w-tid="597"/></label><div class="section-title balance-title" w-tid="599">Color balance</div><label w-tid="601">Red / cyan <span data-value="balanceR" w-tid="603">0</span><input data-balance="r" type="range" min="-50" max="50" value="0" w-tid="605"/></label><label w-tid="607">Green / magenta <span data-value="balanceG" w-tid="609">0</span><input data-balance="g" type="range" min="-50" max="50" value="0" w-tid="611"/></label><label w-tid="613">Blue / yellow <span data-value="balanceB" w-tid="615">0</span><input data-balance="b" type="range" min="-50" max="50" value="0" w-tid="617"/></label><button class="mini-choice" id="balance-range" w-tid="619">Range: Midtones</button></div>
+        </section>
+        <section class="side-panel history-panel hidden" id="history-panel" w-tid="621"><div class="history-heading" w-tid="623"><span w-tid="625">History</span><span id="history-count" w-tid="627">1 step</span></div><div class="history-list" id="history-list" w-tid="629"></div></section>
+      </aside>
+    </main>
+  </div>
+
+  <input id="file-input" type="file" accept="image/*" hidden w-tid="631"/>
+  <div class="modal-backdrop hidden" id="modal-backdrop" w-tid="633"><section class="modal" id="modal" w-tid="635"><button class="modal-close" id="modal-close" aria-label="Close" w-tid="637"><i data-lucide="x" w-tid="639"></i></button><div id="modal-content" w-tid="641"></div></section></div>
+  <div class="toast" id="toast" w-tid="643"></div>
+  <script type="module" src="app.js" w-tid="645"></script>
+</body>
+</html>
